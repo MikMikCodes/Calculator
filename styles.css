@@ -1,0 +1,110 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(
+    to right,
+    #f72585,
+    #b5179e,
+    #7209b7,
+    #3a0ca3,
+    #4361ee,
+    #4895ef,
+    #4cc9f0
+  );
+  background-size: 420% 420%;
+  animation: gradient-animation 25s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.calculator-container {
+  position: relative;
+  width: 400px;
+  height: 500px;
+  background-color: black;
+}
+
+.calculator-grid {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh; /*each button will fill 100% of the height all the time*/
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px); /*result box can adjust to the amount inputted vertically*/
+  /* background-color: pink; */
+}
+
+/* Select all button inside the grid */
+.calculator-grid > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+#round-corner-l {
+  border-radius: 0 0 0 20px;
+}
+#round-corner-r {
+  border-radius: 0 0 20px 0;
+}
+
+.calculator-grid > button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.span-two {
+  grid-column: span 2;
+}
+
+.output {
+  grid-column: 1 / -1; /*fill column from the first(1) to the last column(-1) */
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 15px;
+  word-wrap: break-word; /*break a word at any time*/
+  word-break: break-all; /*break any word to allow it to go onto a new row/line*/
+  border-radius: 20px 20px 0 0;
+}
+
+.output .prevOp {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.5rem;
+}
+
+.output .currentOp {
+  color: white;
+  font-size: 2.5rem;
+}
+
+footer {
+  color: black;
+  text-align: center;
+  font-weight: 400;
+}
